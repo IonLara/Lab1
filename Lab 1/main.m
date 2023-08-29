@@ -17,7 +17,10 @@ int main(int argc, const char * argv[]) {
         char choice[255];
         NSString *inputString;
         NSString *newString;
+        NSMutableString *mutableString;
         NSInteger numberized;
+        unichar questionMark = 0x003F;
+        unichar exclamation = 0x0021;
         
         
         while (true) {
@@ -50,8 +53,23 @@ int main(int argc, const char * argv[]) {
                 }
             } else if(number == 4) {
                 //Canadianize
+                NSCharacterSet *newlineCharacterSet = [NSCharacterSet newlineCharacterSet];
+                newString = [inputString stringByTrimmingCharactersInSet:newlineCharacterSet];
+                mutableString = [newString mutableCopy];
+                [mutableString appendString:@", eh?"];
+                NSLog(@"Canadianized String: %@", mutableString);
             } else if(number == 5) {
                 //Respond
+                NSCharacterSet *newlineCharacterSet = [NSCharacterSet newlineCharacterSet];
+                newString = [inputString stringByTrimmingCharactersInSet:newlineCharacterSet];
+                unichar lastChar = [newString characterAtIndex:newString.length - 1];
+                if(lastChar == questionMark){
+                    NSLog(@"I don't know.");
+                } else if(lastChar == exclamation){
+                    NSLog(@"Whoa, calm down!");
+                } else {
+                    NSLog(@"What am I supposed to say then?");
+                }
             } else if(number == 6) {
                 //De-Space
             } else if(number == 7) {
