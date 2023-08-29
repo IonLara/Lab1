@@ -17,6 +17,7 @@ int main(int argc, const char * argv[]) {
         char choice[255];
         NSString *inputString;
         NSString *newString;
+        NSInteger numberized;
         
         
         while (true) {
@@ -31,20 +32,28 @@ int main(int argc, const char * argv[]) {
             fgets(choice, 255, stdin);
             int number = atoi(choice);
             if(number == 1) {
-                //Capitalize
+                //Uppercase
                 newString = inputString.localizedUppercaseString;
-                NSLog(@"Capitalized String: %@", newString);
+                NSLog(@"Uppercase String: %@", newString);
                 continue;
             } else if(number == 2) {
-                
+                //Lowercase
+                newString = inputString.localizedLowercaseString;
+                NSLog(@"Lowercase String: %@", newString);
             } else if(number == 3) {
-                
+                //Numberize
+                numberized = [inputString integerValue];
+                if(numberized == 0 && ![inputString  isEqual: @"0\n"]) {
+                    NSLog(@"Failed to convert to integer!");
+                } else {
+                    NSLog(@"Integer value is: %ld", (long)numberized);
+                }
             } else if(number == 4) {
-                
+                //Canadianize
             } else if(number == 5) {
-                
+                //Respond
             } else if(number == 6) {
-                
+                //De-Space
             } else if(number == 7) {
                 needsInput = true;
                 continue;
