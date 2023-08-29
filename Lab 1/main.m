@@ -72,6 +72,8 @@ int main(int argc, const char * argv[]) {
                 }
             } else if(number == 6) {
                 //De-Space
+                newString = [inputString stringByReplacingOccurrencesOfString:@" " withString:@"-"];
+                NSLog(@"De-Spaced-String: %@", newString);
             } else if(number == 7) {
                 needsInput = true;
                 continue;
